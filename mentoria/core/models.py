@@ -1,0 +1,23 @@
+from uuid import uuid4
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+
+class AbstractBaseModel(models.Model):
+    uuid = models.UUIDField(verbose_name=_('uuid'), default=uuid4, editable=False, unique=True, db_index=True)
+    created_at = models.DateTimeField(verbose_name=_('created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name=_('updated at'), auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class Teste(AbstractBaseModel):
+    name = models.CharField(verbose_name=_('name'), max_length=255)
+
+    class Meta:
+        verbose_name = _('test')
+        verbose_name_plural = _('tests')
+
+    def __str__(self):
+        return f'{self.name}'
