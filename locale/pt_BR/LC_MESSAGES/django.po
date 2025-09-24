@@ -37,11 +37,3 @@ msgstr "atualizado em"
 #: mentoria/core/models.py:16
 msgid "name"
 msgstr "nome"
-
-#: mentoria/core/models.py:19
-msgid "test"
-msgstr "teste"
-
-#: mentoria/core/models.py:20
-msgid "tests"
-msgstr "testes"

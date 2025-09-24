@@ -10,14 +10,3 @@ class AbstractBaseModel(models.Model):
 
     class Meta:
         abstract = True
-
-
-class Teste(AbstractBaseModel):
-    name = models.CharField(verbose_name=_('name'), max_length=255)
-
-    class Meta:
-        verbose_name = _('test')
-        verbose_name_plural = _('tests')
-
-    def __str__(self):
-        return f'{self.name}'
