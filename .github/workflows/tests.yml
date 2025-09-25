@@ -20,20 +20,20 @@ jobs:
         #   - db: postgres
         #     db_port: 5432
 
-    services:
-      # postgres:
-      #   image: postgres:16-alpine
-      #   env:
-      #     POSTGRES_USER: postgres
-      #     POSTGRES_PASSWORD: postgres
-      #     POSTGRES_DATABASE: postgres
-      #   options: >-
-      #     --health-cmd pg_isready
-      #     --health-interval 1s
-      #     --health-timeout 5s
-      #     --health-retries 6
-      #   ports:
-      #     - 5432:5432
+    # services:
+    #   postgres:
+    #     image: postgres:16-alpine
+    #     env:
+    #       POSTGRES_USER: postgres
+    #       POSTGRES_PASSWORD: postgres
+    #       POSTGRES_DATABASE: postgres
+    #     options: >-
+    #       --health-cmd pg_isready
+    #       --health-interval 1s
+    #       --health-timeout 5s
+    #       --health-retries 6
+    #     ports:
+    #       - 5432:5432
 
     steps:
       - uses: actions/checkout@v4
