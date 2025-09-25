@@ -46,9 +46,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-EXTRA_APPS = []
+EXTRA_APPS = [
+    'test_without_migrations'
+]
 
-PROJECT_APPS = ['mentoria.core']
+PROJECT_APPS = [
+    'mentoria.core',
+    'mentoria.blog',
+]
 
 INSTALLED_APPS += EXTRA_APPS
 INSTALLED_APPS += PROJECT_APPS
@@ -138,9 +143,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # SENTRY
-
 sentry_sdk.init(
     environment=ENV,
     dsn=config('SENTRY_DSN', default=''),

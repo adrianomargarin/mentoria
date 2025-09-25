@@ -7,3 +7,6 @@ ipython==9.5.0
 
 # Sentry
 sentry-sdk
+
+# Tests
+django-test-without-migrations
