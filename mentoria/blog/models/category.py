@@ -1,6 +1,5 @@
-from django.db import models
 from django.utils.translation import gettext_lazy as _
-from mentoria.core.models import AbstractBaseModel
+from mentoria.core.models import AbstractBaseModel, models
 
 
 class Category(AbstractBaseModel):
