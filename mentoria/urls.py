@@ -16,11 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-def trigger_error(request):
-    division_by_zero = 1 / 0
+from mentoria.core.views import home as home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sentry-debug/', trigger_error),
+    path('', home_view),
 ]
