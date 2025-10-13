@@ -46,14 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-EXTRA_APPS = [
-    'test_without_migrations'
-]
+EXTRA_APPS = ['test_without_migrations', 'django_summernote', 'storages']
 
-PROJECT_APPS = [
-    'mentoria.core',
-    'mentoria.blog',
-]
+PROJECT_APPS = ['mentoria.core', 'mentoria.blog']
 
 INSTALLED_APPS += EXTRA_APPS
 INSTALLED_APPS += PROJECT_APPS
