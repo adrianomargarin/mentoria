@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from mentoria.blog.models.post import Post
 
 
@@ -14,7 +14,8 @@ class PostListView(ListView):
         return Post.objects.filter(published_by__isnull=False)
 
 
-def post_detail(request, category_slug, post_slug):
-    post = get_object_or_404(Post, category__slug=category_slug, slug=post_slug)
+class PostDetailView(DetailView):
+    template_name = 'blog/post.html'
 
-    return render(request, 'blog/post.html', {'post': post})
+    def get_object(self):
+        return get_object_or_404(Post, category__slug=self.kwargs['category_slug'], slug=self.kwargs['post_slug'])

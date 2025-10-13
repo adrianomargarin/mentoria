@@ -15,7 +15,6 @@
 
 {% block content %}
 
-<!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
   <div class="container px-4 px-lg-5">
     <a class="navbar-brand" href="{% url 'blog:index' %}">Blog</a>
@@ -34,23 +33,33 @@
   </div>
 </nav>
 
-<!-- Page Header-->
 <header class="masthead" id="blog-bg-home">
   <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
+
+        {% block blog_header %}
         <div class="site-heading">
           <h1>Mentoria</h1>
           <span class="subheading">By Adriano Margarin</span>
         </div>
+        {% endblock blog_header %}
+
       </div>
     </div>
   </div>
 </header>
 
-{% block blog_content %}{% endblock blog_content %}
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
 
-<!-- Footer-->
+      {% block blog_content %}{% endblock blog_content %}
+
+    </div>
+  </div>
+</div>
+
 <footer class="border-top">
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">

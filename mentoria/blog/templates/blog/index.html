@@ -9,30 +9,24 @@
 
 {% block blog_content %}
 
-<!-- Main Content-->
-<div class="container px-4 px-lg-5">
-  <div class="row gx-4 gx-lg-5 justify-content-center">
-    <div class="col-md-10 col-lg-8 col-xl-7">
-      {% for post in posts %}
-      <!-- Post preview-->
-      <div class="post-preview">
-        <a href="{% url 'blog:detail' post.category.slug post.slug %}">
-          <h2 class="post-title">{{ post.title }}</h2>
-          <h3 class="post-subtitle">{{ post.subtitle }}</h3>
-        </a>
-        <p class="post-meta">
-          Posted by <span>{{ post.published_by }}</span> {{ post.published_at|date:"d F, Y" }}
-        </p>
-      </div>
-      <!-- Divider-->
-      <hr class="my-4" />
-      {% empty %}
-      <span>Nenhum POST publicado.</span>
-      {% endfor %}
+{% for post in posts %}
 
-      {% include 'components/paginator.html' %}
-
-    </div>
-  </div>
+<div class="post-preview">
+  <a href="{% url 'blog:detail' post.category.slug post.slug %}">
+    <h2 class="post-title">{{ post.title }}</h2>
+    <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+  </a>
+  <p class="post-meta">
+    Posted by <span>{{ post.published_by }}</span> {{ post.published_at|date:"d F, Y" }}
+  </p>
 </div>
+
+<hr class="my-4" />
+
+{% empty %}
+<span>Nenhum POST publicado.</span>
+{% endfor %}
+
+{% include 'components/paginator.html' %}
+
 {% endblock blog_content %}
