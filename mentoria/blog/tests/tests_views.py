@@ -30,8 +30,25 @@ class PostDetailViewTestCase(TestCase):
 
     def test_content(self):
         "verifica se conteúdo está visivel na página"
-        excepted_content = [self.post.title, self.post.subtitle, self.post.text]
+        expected_content = [self.post.title, self.post.subtitle, self.post.text]
 
         with self.subTest():
-            for value in excepted_content:
+            for value in expected_content:
+                self.assertIn(value, self.response.content.decode('utf-8'))
+
+
+class AboutViewTestCase(TestCase):
+    def setUp(self):
+        self.response = self.client.get(reverse_lazy('blog:about'))
+
+    def test_content(self):
+        expected_content = [
+            'Olá, eu sou o Adriano',
+            'Python e Django',
+            'Mentoria Django',
+            'Vamos construir algo incrível juntos?'
+        ]
+
+        with self.subTest():
+            for value in expected_content:
                 self.assertIn(value, self.response.content.decode('utf-8'))

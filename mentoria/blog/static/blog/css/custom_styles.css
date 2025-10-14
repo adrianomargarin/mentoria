@@ -1,3 +1,8 @@
 #blog-bg-home {
     background-image: url('../assets/img/home-bg.jpg');
 }
+
+.about p {
+  text-indent: 2rem;
+  text-align: justify;
+}

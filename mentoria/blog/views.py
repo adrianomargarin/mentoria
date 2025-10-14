@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from mentoria.blog.models.post import Post
 
 
@@ -17,3 +17,7 @@ class PostDetailView(DetailView):
 
     def get_object(self):
         return get_object_or_404(Post, category__slug=self.kwargs['category_slug'], slug=self.kwargs['post_slug'])
+
+
+class AboutView(TemplateView):
+    template_name = 'blog/about.html'
