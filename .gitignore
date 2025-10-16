@@ -208,3 +208,7 @@ __marimo__/
 
 # Docker Volumes
 .postgres-volume
+
+# Media Files
+.media/
+.staticfiles/

@@ -1,0 +1,37 @@
+{% extends "blog/base_blog.html" %}
+{% load static %}
+
+{% block metatags %}
+<meta name="description" content="" />
+<meta name="author" content="" />
+{% endblock metatags %}
+
+{% block blog_header %}
+<div class="post-heading">
+  <h1>{{ post.title }}</h1>
+  <h2 class="subheading">{{ post.subtitle }}</h2>
+  <span class="meta">
+    Posted by <span>{{ post.published_by }}</span> {{ post.published_at|date:"d F, Y" }}
+  </span>
+</div>
+{% endblock blog_header %}
+
+{% block blog_content %}
+
+<div class="d-flex justify-content-end mb-4">
+  <a class="btn btn-primary btn-sm text-uppercase" href="{% url 'blog:index' %}"><i class="fa-solid fa-backward"></i> Voltar</a>
+</div>
+
+<hr class="my-4">
+
+<article class="mb-4">
+  {{ post.text|safe }}
+</article>
+
+<hr class="my-4">
+
+<div class="d-flex justify-content-end mb-4">
+  <a class="btn btn-primary btn-sm text-uppercase" href="{% url 'blog:index' %}"><i class="fa-solid fa-backward"></i> Voltar</a>
+</div>
+
+{% endblock blog_content %}

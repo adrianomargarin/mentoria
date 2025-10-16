@@ -46,14 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-EXTRA_APPS = [
-    'test_without_migrations'
-]
+EXTRA_APPS = ['test_without_migrations', 'django_summernote', 'storages']
 
-PROJECT_APPS = [
-    'mentoria.core',
-    'mentoria.blog',
-]
+PROJECT_APPS = ['mentoria.core', 'mentoria.blog']
 
 INSTALLED_APPS += EXTRA_APPS
 INSTALLED_APPS += PROJECT_APPS
@@ -137,6 +132,16 @@ LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = config('STATIC_ROOT', default=os.path.join(BASE_DIR, 'mentoria/staticfiles'))
+
+MEDIA_URL = '/media/'
+
+DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE', default='django.core.files.storage.FileSystemStorage')
+
+if DEFAULT_FILE_STORAGE == 'django.core.files.storage.FileSystemStorage':
+    MEDIA_ROOT = config('MEDIA_ROOT', default=os.path.join(BASE_DIR, 'mentoria/media'))
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

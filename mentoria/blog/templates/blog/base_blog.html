@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block metatags %}
+<meta name="description" content="" />
+<meta name="author" content="" />
+{% endblock metatags %}
+
+{% block title %}Blog Adriano Margarin{% endblock %}
+
+{% block css %}
+<link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
+<link href="{% static 'blog/css/custom_styles.css' %}" rel="stylesheet" />
+{% endblock css %}
+
+{% block content %}
+
+{% comment %}
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="{% url 'blog:index' %}">Blog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto py-4 py-lg-0">
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:index' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:about' %}">About</a></li>
+        {# <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li> #}
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endcomment %}
+
+
+<header class="masthead" id="blog-bg-home">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+
+        {% block blog_header %}
+        <div class="site-heading">
+          <h1>Blog</h1>
+          <span class="subheading">By Adriano Margarin</span>
+        </div>
+        {% endblock blog_header %}
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+
+      {% block blog_content %}{% endblock blog_content %}
+
+    </div>
+  </div>
+</div>
+
+<footer class="border-top">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <ul class="list-inline text-center">
+          <li class="list-inline-item">
+            <a href="https://www.instagram.com/adrianomargarin/" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-brands fa-square-instagram fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://www.linkedin.com/in/adrianomargarin/" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-brands fa-linkedin-in fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://github.com/adrianomargarin/" target="_blank">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+        <div class="small text-center text-muted fst-italic">Copyright &copy; Adriano Margarin {% now "Y" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'blog/js/scripts.js' %}"></script>
+
+{% endblock %}
