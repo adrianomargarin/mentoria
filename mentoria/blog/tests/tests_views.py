@@ -1,14 +1,14 @@
 from datetime import datetime
 from model_bakery import baker
 from django.test import TestCase
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from mentoria.blog.models import Post
 
 
 class PostListViewTestCase(TestCase):
     def setUp(self):
         self.posts = baker.make('blog.Post', published_at=datetime.now(), _quantity=10)
-        self.response = self.client.get(reverse_lazy('blog:list'))
+        self.response = self.client.get(reverse_lazy('blog:index'))
 
     def test_total_count(self):
         "Verifica o total de posts criados"

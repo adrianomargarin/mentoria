@@ -7,7 +7,7 @@ class PostListView(ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
     paginate_by = 5
-    ordering = ['-published_by']
+    ordering = ['-published_at']
     queryset = Post.objects.filter(published_at__isnull=False)
 
 

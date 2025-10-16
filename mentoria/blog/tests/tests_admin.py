@@ -3,8 +3,11 @@ from model_bakery import baker
 from django.contrib import admin
 from django.test import TestCase, RequestFactory
 from django.contrib.messages.storage.fallback import FallbackStorage
+
 from mentoria.blog.models.post import Post
 from mentoria.blog.admin.post import PostAdmin
+
+class FakeForm: ...
 
 
 class PostAdminTestCase(TestCase):
@@ -34,3 +37,37 @@ class PostAdminTestCase(TestCase):
 
         self.assertEqual(len(msgs), 1)
         self.assertEqual(msgs[0].message, '5 POSTs publicados.')
+
+    def test_save_model_create_object(self):
+        request = self.factory.get("/")
+        request.user = self.user
+
+        obj = Post(
+            category=baker.make('blog.Category'),
+            title='title',
+            subtitle='subtitle',
+            slug='slug',
+            text='text',
+        )
+
+        self.post_admin.save_model(request, obj, FakeForm(), False)
+
+        self.assertEqual(obj.created_by, self.user)
+
+    def test_save_model_update_object(self):
+        request = self.factory.get("/")
+        request.user = self.user
+        another_user = baker.make('auth.User')
+
+        obj = Post.objects.create(
+            category=baker.make('blog.Category'),
+            title='title',
+            subtitle='subtitle',
+            slug='slug',
+            text='text',
+            created_by=another_user
+        )
+
+        self.post_admin.save_model(request, obj, FakeForm(), True)
+
+        self.assertEqual(obj.created_by, another_user)

@@ -23,7 +23,7 @@ from mentoria.core.views import home as home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('mentoria.blog.urls', namespace='blog')),
+    path('blog/', include('mentoria.blog.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('', home_view),
 ]

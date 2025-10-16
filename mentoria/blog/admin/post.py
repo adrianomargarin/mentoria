@@ -12,6 +12,7 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ['title']}
     filter_horizontal = ['tags']
     actions = ['action_publish']
+    readonly_fields = ['created_by', 'published_by', 'published_at']
 
     @admin.display(description=_('publish'))
     def action_publish(self, request, queryset):
@@ -20,3 +21,9 @@ class PostAdmin(admin.ModelAdmin):
         queryset.update(published_by=request.user, published_at=datetime.now())
 
         self.message_user(request, f'{count} POSTs publicados.')
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.created_by = request.user
+
+        return super().save_model(request, obj, form, change)

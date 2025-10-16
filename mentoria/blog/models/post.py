@@ -18,7 +18,7 @@ class Post(AbstractBaseModel):
     )
     published_by = models.ForeignKey(
         'auth.User',
-        verbose_name=_('created by'),
+        verbose_name=_('published by'),
         related_name='posts_published_by',
         on_delete=models.SET_NULL,
         null=True,

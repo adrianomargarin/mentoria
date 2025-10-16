@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
                 ('published_at', models.DateTimeField(blank=True, null=True, verbose_name='published at')),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='blog.category', verbose_name='category')),
                 ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='posts_created_by', to=settings.AUTH_USER_MODEL, verbose_name='created by')),
-                ('published_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='posts_published_by', to=settings.AUTH_USER_MODEL, verbose_name='created by')),
+                ('published_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='posts_published_by', to=settings.AUTH_USER_MODEL, verbose_name='published by')),
                 ('tags', models.ManyToManyField(blank=True, to='blog.tag', verbose_name='tags')),
             ],
             options={
