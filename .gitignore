@@ -210,4 +210,5 @@ __marimo__/
 .postgres-volume
 
 # Media Files
-media/
+.media/
+.staticfiles/

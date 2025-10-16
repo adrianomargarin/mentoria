@@ -133,6 +133,16 @@ LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = config('STATIC_ROOT', default=os.path.join(BASE_DIR, 'mentoria/staticfiles'))
+
+MEDIA_URL = '/media/'
+
+DEFAULT_FILE_STORAGE = config('DEFAULT_FILE_STORAGE', default='django.core.files.storage.FileSystemStorage')
+
+if DEFAULT_FILE_STORAGE == 'django.core.files.storage.FileSystemStorage':
+    MEDIA_ROOT = config('MEDIA_ROOT', default=os.path.join(BASE_DIR, 'mentoria/media'))
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
